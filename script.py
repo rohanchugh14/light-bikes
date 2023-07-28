@@ -49,15 +49,12 @@ def get_next_move(board, curr_loc, enemy_loc, found, wall_offset):
   x_diff = enemy_x - x
   y_diff = enemy_y - y
   if abs(x_diff) <= 1 and abs(y_diff) <= 1 or found:
-    # if(wall_offset != None):
-    #   print("wall offset:", wall_offset)
-    #   return (x + wall_offset[0], y + wall_offset[1], True, wall_offset)
-    # wall_offset = get_best_direction(board, curr_loc)
-    # print("wall offset:", wall_offset)
-    # return (x + wall_offset[0], y + wall_offset[0], True, wall_offset)
-    # return get_best_direction(board, curr_loc)
-    best_dir = get_best_direction(board, curr_loc)
-    return (best_dir[0], best_dir[1], True, None)
+    if(wall_offset != None):
+      print("wall offset:", wall_offset)
+      return (x + wall_offset[0], y + wall_offset[1], True, wall_offset)
+    wall_offset = get_best_direction(board, curr_loc)
+    print("wall offset:", wall_offset)
+    return (x + wall_offset[0], y + wall_offset[0], True, wall_offset)
   if abs(x_diff) > abs(y_diff):
     if x_diff > 0:
       return (x + 1, y, False, None)
@@ -87,7 +84,7 @@ def get_best_direction(board, curr_loc):
   # explore each direction and return the direction that has the most open spaces
   # where positive x is down and positive y is right
   # check up
-  # return find_nearest_wall(board, curr_loc)
+  return find_nearest_wall(board, curr_loc)
   max_spaces = -1
   best_offset = None
   for offset in DIRECTION_OFFSETS:
