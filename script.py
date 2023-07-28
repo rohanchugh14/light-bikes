@@ -4,12 +4,12 @@ DIRECTION_OFFSETS = [(0, -1), (0, 1), (-1, 0), (1, 0)]
 def main():
   url = 'http://light-bikes.inseng.net/games'
   # res = requests.get('http://light-bikes.inseng.net/games')
-  res = requests.post(f'{url}?addServerBot=true&boardSize=25&numPlayers=2&serverBotDifficulty=3')
+  # res = requests.post(f'{url}?addServerBot=true&boardSize=25&numPlayers=2&serverBotDifficulty=3')
   # convert to json
-  data = res.json()
-  print(data)
-  game_id = data['id']
-  # game_id = 740
+  # data = res.json()
+  # print(data)
+  # game_id = data['id']
+  game_id = 1142
   res = requests.post(f'{url}/{game_id}/join?name=rohan')
   data = res.json()
   data = data[0]
